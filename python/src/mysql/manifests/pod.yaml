@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  containers:
+  - name: mysql
+    image: mariadb
+    env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: Auth123
+    ports:
+      - containerPort: 3306
+    volumeMounts:
+      - name: mysql-initdb
+        mountPath: /docker-entrypoint-initdb.d
+  volumes:
+    - name: mysql-initdb
+      configMap:
+        name: mysql-initdb-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-initdb-config
+data:
+  initdb.sql: |
+    CREATE USER 'auth_user'@'%' IDENTIFIED BY 'Auth123';
+    CREATE DATABASE auth;
+    GRANT ALL PRIVILEGES ON auth.* TO 'auth_user'@'%';
+    USE auth;
+    CREATE TABLE user (
+      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      email VARCHAR(255) NOT NULL UNIQUE,
+      password VARCHAR(255) NOT NULL
+    );
+    INSERT INTO user (email, password) VALUES ('aswinnnnn369@gmail.com', 'Admin123');

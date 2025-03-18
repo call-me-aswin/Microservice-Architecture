@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microservice Architecture</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header>
+        <h1>Video to MP3 Converter</h1>
+        <p>Convert your videos to MP3 easily using our microservices-based system!</p>
+    </header>
+
+    <main>
+        <!-- Login Section -->
+        <section id="login-section">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+            <div id="loginMessage" class="message"></div>
+        </section>
+
+        <!-- Upload Section -->
+        <section id="upload-section" style="display: none;">
+            <h2>Upload Your Video</h2>
+            <form id="uploadForm">
+                <label for="video">Choose a video file:</label>
+                <input type="file" id="video" name="video" accept="video/*" required>
+                <button type="submit">Upload</button>
+            </form>
+            <div id="uploadMessage" class="message"></div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download-section" style="display: none;">
+            <h2>Download Your MP3</h2>
+            <form id="downloadForm">
+                <label for="fileId">Enter MP3 File ID:</label>
+                <input type="text" id="fileId" name="fileId" required>
+                <button type="submit">Download</button>
+            </form>
+            <div id="downloadMessage" class="message"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# filepath: /home/aswin/mini_project/python/src/auth/manifests/mysql-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  selector:
+    app: mysql
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP
